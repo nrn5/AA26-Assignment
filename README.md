@@ -24,7 +24,7 @@ Made up of **four** main layers:
 * *Dark Green Point*: Used in **Cohesion**, shows the grouup center of mass.
 * *Yellow Line*: Used in **Alignment**, shows the average group movement direction.
 * *Blue Sphere*: Used in **Avoidance**, shows detection radius.
-* *Yellow-Green*: Used in **Avoidance**, shows raycast hit direction.
+* *Yellow-Green Line*: Used in **Avoidance**, shows raycast hit direction.
 * *Orange Line*: Used in **Pursue**, shows current target position.
 * *Purple Point*: Used in **Pursue**, shows predicted future target position.
 * *Purple Line*: Used in **Wander**, shows projected wander target.
