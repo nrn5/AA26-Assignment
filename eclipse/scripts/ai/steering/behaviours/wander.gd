@@ -25,7 +25,7 @@ func calculate() -> Vector3:
 	return (desired_velocity - agent.velocity) * weight
 
 func on_draw_gizmos():
-	if !drawGizmos:
+	if !draw_gizmos:
 		return
 	var center = agent.global_position + agent.global_transform.basis * Vector3.FORWARD * distance
 	# wander influence area

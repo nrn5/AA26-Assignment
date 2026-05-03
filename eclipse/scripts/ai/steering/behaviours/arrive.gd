@@ -25,13 +25,11 @@ func calculate() -> Vector3:
 	return (desired_velocity - agent.velocity) * weight
 
 func on_draw_gizmos():
-	if !drawGizmos or target == null:
+	if !draw_gizmos or target == null:
 		return
 	# target marker
 	DebugDraw3D.draw_position(target.global_transform, Color.AQUAMARINE)
-
 	# slow radius
 	DebugDraw3D.draw_sphere(target.global_position, slow_radius, Color.AQUAMARINE)
-
 	# direction line,, agent to target
 	DebugDraw3D.draw_line(agent.global_position, target.global_position, Color.AQUAMARINE)

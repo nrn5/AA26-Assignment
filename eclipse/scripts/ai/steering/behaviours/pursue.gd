@@ -31,7 +31,7 @@ func calculate() -> Vector3:
 	return (desired_velocity - agent.velocity) * weight
 
 func on_draw_gizmos():
-	if !drawGizmos or target == null:
+	if !draw_gizmos or target == null:
 		return
 	# current target position
 	DebugDraw3D.draw_line(agent.global_position, target.global_position, Color.ORANGE)

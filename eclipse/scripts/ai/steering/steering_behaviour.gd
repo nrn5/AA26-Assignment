@@ -2,7 +2,7 @@ class_name SteeringBehaviour
 extends Node
 
 @export var weight := 1.0
-@export var drawGizmos := true
+@export var draw_gizmos := true
 @export var enabled := true : set = set_enabled, get = is_enabled
 
 # reference to whatever uses this behaviour
@@ -22,5 +22,5 @@ func on_draw_gizmos():
 	pass
 
 func _process(delta):
-	if drawGizmos and enabled:
+	if draw_gizmos and enabled:
 		on_draw_gizmos()

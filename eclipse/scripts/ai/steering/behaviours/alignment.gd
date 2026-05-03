@@ -24,7 +24,7 @@ func calculate() -> Vector3:
 	return (desired_velocity - agent.velocity) * weight
 
 func on_draw_gizmos():
-	if !drawGizmos:
+	if !draw_gizmos:
 		return
 	if neighbours.is_empty():
 		return

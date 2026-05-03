@@ -24,6 +24,6 @@ func calculate() -> Vector3:
 	return (desired_velocity - agent.velocity) * weight
 
 func on_draw_gizmos():
-	if !drawGizmos or target == null:
+	if !draw_gizmos or target == null:
 		return
 	DebugDraw3D.draw_sphere(target.global_position, flee_range, Color.RED)
