@@ -22,5 +22,7 @@ func calculate() -> Vector3:
 	return force
 	
 func on_draw_gizmos():
+	if !show_gizmos:
+		return
 	if target:
 		DebugDraw3D.draw_line(agent.global_position, target.global_position, Color.GREEN)
