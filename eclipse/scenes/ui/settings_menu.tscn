@@ -31,7 +31,7 @@ grow_vertical = 2
 [node name="Panel" type="Panel" parent="CenterContainer" unique_id=112281468]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" unique_id=92308219]
+[node name="mgnSettings" type="MarginContainer" parent="CenterContainer/Panel" unique_id=92308219]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -49,70 +49,86 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="vbxRoot" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=1729829616]
+[node name="vbxSettingsMenu" type="VBoxContainer" parent="CenterContainer/Panel/mgnSettings" unique_id=1729829616]
 layout_mode = 2
 
-[node name="lblSettings" type="Label" parent="CenterContainer/Panel/MarginContainer/vbxRoot" unique_id=2141827566]
+[node name="lblSettings" type="Label" parent="CenterContainer/Panel/mgnSettings/vbxSettingsMenu" unique_id=2141827566]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="vbxMouseSensitivity" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer/vbxRoot" unique_id=2098431288]
+[node name="vbxMouseSensitivity" type="VBoxContainer" parent="CenterContainer/Panel/mgnSettings/vbxSettingsMenu" unique_id=2098431288]
 layout_mode = 2
 
-[node name="lblMouseSn" type="Label" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxMouseSensitivity" unique_id=990726026]
+[node name="lblMouseSn" type="Label" parent="CenterContainer/Panel/mgnSettings/vbxSettingsMenu/vbxMouseSensitivity" unique_id=990726026]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Mouse Sensitivity:"
 horizontal_alignment = 1
 
-[node name="hbxMouseSn" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxMouseSensitivity" unique_id=1623240581]
+[node name="hbxMouseSn" type="HBoxContainer" parent="CenterContainer/Panel/mgnSettings/vbxSettingsMenu/vbxMouseSensitivity" unique_id=1623240581]
 layout_mode = 2
 
-[node name="hslMouseSn" type="HSlider" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxMouseSensitivity/hbxMouseSn" unique_id=23433697]
+[node name="hslMouseSn" type="HSlider" parent="CenterContainer/Panel/mgnSettings/vbxSettingsMenu/vbxMouseSensitivity/hbxMouseSn" unique_id=23433697]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="lblMouseSnVal" type="Label" parent="CenterContainer/Panel/mgnSettings/vbxSettingsMenu/vbxMouseSensitivity" unique_id=1596160312]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0%"
+
+[node name="vbxMusicVol" type="VBoxContainer" parent="CenterContainer/Panel/mgnSettings/vbxSettingsMenu" unique_id=1274765784]
 layout_mode = 2
 
-[node name="lblMouseSnVal" type="Label" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxMouseSensitivity/hbxMouseSn" unique_id=1596160312]
-layout_mode = 2
-
-[node name="vbxMusicVol" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer/vbxRoot" unique_id=1274765784]
-layout_mode = 2
-
-[node name="lblMusicVol" type="Label" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxMusicVol" unique_id=1033711578]
+[node name="lblMusicVol" type="Label" parent="CenterContainer/Panel/mgnSettings/vbxSettingsMenu/vbxMusicVol" unique_id=1033711578]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Music Volume:"
 horizontal_alignment = 1
 
-[node name="hbxMusicVol" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxMusicVol" unique_id=877088976]
+[node name="hbxMusicVol" type="HBoxContainer" parent="CenterContainer/Panel/mgnSettings/vbxSettingsMenu/vbxMusicVol" unique_id=877088976]
 layout_mode = 2
 
-[node name="hslMusicVol" type="HSlider" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxMusicVol/hbxMusicVol" unique_id=2130424647]
+[node name="hslMusicVol" type="HSlider" parent="CenterContainer/Panel/mgnSettings/vbxSettingsMenu/vbxMusicVol/hbxMusicVol" unique_id=2130424647]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="lblMusicVolVal" type="Label" parent="CenterContainer/Panel/mgnSettings/vbxSettingsMenu/vbxMusicVol" unique_id=2048029040]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0%"
+
+[node name="vbxSFXVol" type="VBoxContainer" parent="CenterContainer/Panel/mgnSettings/vbxSettingsMenu" unique_id=2050476841]
 layout_mode = 2
 
-[node name="lblMusicVolVal" type="Label" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxMusicVol/hbxMusicVol" unique_id=2048029040]
-layout_mode = 2
-
-[node name="vbxSFXVol" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer/vbxRoot" unique_id=2050476841]
-layout_mode = 2
-
-[node name="lblSFXVol" type="Label" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxSFXVol" unique_id=1828717127]
+[node name="lblSFXVol" type="Label" parent="CenterContainer/Panel/mgnSettings/vbxSettingsMenu/vbxSFXVol" unique_id=1828717127]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "SFX Volume:"
 horizontal_alignment = 1
 
-[node name="hbxSFXVol" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxSFXVol" unique_id=1182669589]
+[node name="hbxSFXVol" type="HBoxContainer" parent="CenterContainer/Panel/mgnSettings/vbxSettingsMenu/vbxSFXVol" unique_id=1182669589]
 layout_mode = 2
 
-[node name="hslSFXVol" type="HSlider" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxSFXVol/hbxSFXVol" unique_id=1744034429]
+[node name="hslSFXVol" type="HSlider" parent="CenterContainer/Panel/mgnSettings/vbxSettingsMenu/vbxSFXVol/hbxSFXVol" unique_id=1744034429]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="lblSFXVolVal" type="Label" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxSFXVol/hbxSFXVol" unique_id=53634732]
+[node name="lblSFXVolVal" type="Label" parent="CenterContainer/Panel/mgnSettings/vbxSettingsMenu/vbxSFXVol" unique_id=53634732]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "0%"
 
-[node name="btnBack" type="Button" parent="CenterContainer/Panel/MarginContainer/vbxRoot" unique_id=1162840146]
+[node name="btnBack" type="Button" parent="CenterContainer/Panel/mgnSettings/vbxSettingsMenu" unique_id=1162840146]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 text = "Back"
+
+[connection signal="value_changed" from="CenterContainer/Panel/mgnSettings/vbxSettingsMenu/vbxMouseSensitivity/hbxMouseSn/hslMouseSn" to="." method="_on_hsl_mouse_sn_value_changed"]
+[connection signal="value_changed" from="CenterContainer/Panel/mgnSettings/vbxSettingsMenu/vbxMouseSensitivity/hbxMouseSn/hslMouseSn" to="." method="_on_mouse_sensitivity_changed"]
+[connection signal="value_changed" from="CenterContainer/Panel/mgnSettings/vbxSettingsMenu/vbxMusicVol/hbxMusicVol/hslMusicVol" to="." method="_on_music_volumn_changed"]
+[connection signal="value_changed" from="CenterContainer/Panel/mgnSettings/vbxSettingsMenu/vbxSFXVol/hbxSFXVol/hslSFXVol" to="." method="_on_sfx_volume_changed"]
+[connection signal="pressed" from="CenterContainer/Panel/mgnSettings/vbxSettingsMenu/btnBack" to="." method="_on_back_pressed"]
