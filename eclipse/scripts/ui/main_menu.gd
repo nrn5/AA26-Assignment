@@ -1,11 +1,23 @@
 extends Control
 
+@onready var settings_menu = $SettingsMenu
+@onready var main_menu = $CenterContainer
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	settings_menu.hide()
+	settings_menu.back_pressed.connect(_on_settings_back)
 
+# { MENU BTNS }
+func _on_start_pressed():
+	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_settings_pressed():
+	settings_menu.show()
+	main_menu.hide()
+
+func _on_quit_pressed():
+	get_tree().quit()
+
+func _on_settings_back():
+	settings_menu.hide()
+	main_menu.show()
