@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://n23g6prqf4dq"]
+
+[ext_resource type="Script" uid="uid://cx8gai61x1dsq" path="res://scripts/ui/settings_menu.gd" id="1_qwcqe"]
+
+[node name="SettingsMenu" type="Control" unique_id=1459943565]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qwcqe")
+
+[node name="crBackground" type="ColorRect" parent="." unique_id=1310870161]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1622751985]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=112281468]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" unique_id=92308219]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -21.0
+offset_right = 58.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="vbxRoot" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=1729829616]
+layout_mode = 2
+
+[node name="lblSettings" type="Label" parent="CenterContainer/Panel/MarginContainer/vbxRoot" unique_id=2141827566]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="vbxMouseSensitivity" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer/vbxRoot" unique_id=2098431288]
+layout_mode = 2
+
+[node name="lblMouseSn" type="Label" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxMouseSensitivity" unique_id=990726026]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Mouse Sensitivity:"
+horizontal_alignment = 1
+
+[node name="hbxMouseSn" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxMouseSensitivity" unique_id=1623240581]
+layout_mode = 2
+
+[node name="hslMouseSn" type="HSlider" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxMouseSensitivity/hbxMouseSn" unique_id=23433697]
+layout_mode = 2
+
+[node name="lblMouseSnVal" type="Label" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxMouseSensitivity/hbxMouseSn" unique_id=1596160312]
+layout_mode = 2
+
+[node name="vbxMusicVol" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer/vbxRoot" unique_id=1274765784]
+layout_mode = 2
+
+[node name="lblMusicVol" type="Label" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxMusicVol" unique_id=1033711578]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Music Volume:"
+horizontal_alignment = 1
+
+[node name="hbxMusicVol" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxMusicVol" unique_id=877088976]
+layout_mode = 2
+
+[node name="hslMusicVol" type="HSlider" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxMusicVol/hbxMusicVol" unique_id=2130424647]
+layout_mode = 2
+
+[node name="lblMusicVolVal" type="Label" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxMusicVol/hbxMusicVol" unique_id=2048029040]
+layout_mode = 2
+
+[node name="vbxSFXVol" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer/vbxRoot" unique_id=2050476841]
+layout_mode = 2
+
+[node name="lblSFXVol" type="Label" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxSFXVol" unique_id=1828717127]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "SFX Volume:"
+horizontal_alignment = 1
+
+[node name="hbxSFXVol" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxSFXVol" unique_id=1182669589]
+layout_mode = 2
+
+[node name="hslSFXVol" type="HSlider" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxSFXVol/hbxSFXVol" unique_id=1744034429]
+layout_mode = 2
+
+[node name="lblSFXVolVal" type="Label" parent="CenterContainer/Panel/MarginContainer/vbxRoot/vbxSFXVol/hbxSFXVol" unique_id=53634732]
+layout_mode = 2
+
+[node name="btnBack" type="Button" parent="CenterContainer/Panel/MarginContainer/vbxRoot" unique_id=1162840146]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+text = "Back"
