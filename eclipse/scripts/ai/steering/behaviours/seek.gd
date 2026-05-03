@@ -13,16 +13,14 @@ func _ready():
 func calculate() -> Vector3:
 	if target == null:
 		return Vector3.ZERO
-	
+		
 	var to_target = target.global_position - agent.global_position
 	var desired_velocity = to_target.normalized() * max_speed
-	var current_velocity = agent.velocity
-	var force = (desired_velocity - current_velocity) * weight
-	
-	return force
-	
+
+	return (desired_velocity - agent.velocity) * weight
+
 func on_draw_gizmos():
-	if !show_gizmos:
+	if !drawGizmos or target == null:
 		return
-	if target:
-		DebugDraw3D.draw_line(agent.global_position, target.global_position, Color.GREEN)
+	DebugDraw3D.draw_line(agent.global_position, target.global_position, 
+						  Color.GREEN)
