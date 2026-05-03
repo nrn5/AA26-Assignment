@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://cscdvsaxom6yg"]
 
 [ext_resource type="Script" uid="uid://c1wjd6aqgelpj" path="res://scripts/ui/pause_menu.gd" id="1_6tw0m"]
+[ext_resource type="PackedScene" uid="uid://n23g6prqf4dq" path="res://scenes/ui/settings_menu.tscn" id="3_8uki6"]
 
-[node name="PauseMenu" type="CanvasLayer" unique_id=1454217643]
+[node name="PauseMenu" type="CanvasLayer" unique_id=1454217643 groups=["pause_menu"]]
 script = ExtResource("1_6tw0m")
 
-[node name="Control" type="Control" parent="." unique_id=1583348034]
+[node name="Root" type="Control" parent="." unique_id=1583348034]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="crBackground" type="ColorRect" parent="Control" unique_id=838663138]
+[node name="crBackground" type="ColorRect" parent="Root" unique_id=838663138]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.78431374)
 
-[node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=87821678]
+[node name="CenterContainer" type="CenterContainer" parent="Root" unique_id=87821678]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,10 +31,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="Control/CenterContainer" unique_id=1532407484]
+[node name="Panel" type="Panel" parent="Root/CenterContainer" unique_id=1532407484]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/CenterContainer/Panel" unique_id=1152150214]
+[node name="MarginContainer" type="MarginContainer" parent="Root/CenterContainer/Panel" unique_id=1152150214]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -51,32 +52,41 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/Panel/MarginContainer" unique_id=58078443]
+[node name="vbxPauseMenu" type="VBoxContainer" parent="Root/CenterContainer/Panel/MarginContainer" unique_id=58078443]
 layout_mode = 2
 alignment = 1
 
-[node name="lblPaused" type="Label" parent="Control/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=783005333]
+[node name="lblPaused" type="Label" parent="Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu" unique_id=783005333]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Game Paused"
 horizontal_alignment = 1
 
-[node name="btnResume" type="Button" parent="Control/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1688258716]
+[node name="btnResume" type="Button" parent="Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu" unique_id=1688258716]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 text = "Resume"
 
-[node name="btnSettings" type="Button" parent="Control/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=2001042827]
+[node name="btnSettings" type="Button" parent="Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu" unique_id=2001042827]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 text = "Settings"
 
-[node name="btnRestart" type="Button" parent="Control/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=978483071]
+[node name="btnRestart" type="Button" parent="Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu" unique_id=978483071]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 text = "Restart"
 
-[node name="btnQuit" type="Button" parent="Control/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1357561839]
+[node name="btnQuit" type="Button" parent="Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu" unique_id=1357561839]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 text = "Quit"
+
+[node name="SettingsMenu" parent="Root" unique_id=1459943565 instance=ExtResource("3_8uki6")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu/btnResume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu/btnSettings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu/btnRestart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu/btnQuit" to="." method="_on_quit_pressed"]
