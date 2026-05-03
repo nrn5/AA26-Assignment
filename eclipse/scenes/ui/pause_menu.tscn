@@ -34,7 +34,7 @@ grow_vertical = 2
 [node name="Panel" type="Panel" parent="Root/CenterContainer" unique_id=1532407484]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Root/CenterContainer/Panel" unique_id=1152150214]
+[node name="mgnPauseMenu" type="MarginContainer" parent="Root/CenterContainer/Panel" unique_id=1152150214]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -52,32 +52,32 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="vbxPauseMenu" type="VBoxContainer" parent="Root/CenterContainer/Panel/MarginContainer" unique_id=58078443]
+[node name="vbxPauseMenu" type="VBoxContainer" parent="Root/CenterContainer/Panel/mgnPauseMenu" unique_id=58078443]
 layout_mode = 2
 alignment = 1
 
-[node name="lblPaused" type="Label" parent="Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu" unique_id=783005333]
+[node name="lblPaused" type="Label" parent="Root/CenterContainer/Panel/mgnPauseMenu/vbxPauseMenu" unique_id=783005333]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Game Paused"
 horizontal_alignment = 1
 
-[node name="btnResume" type="Button" parent="Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu" unique_id=1688258716]
+[node name="btnResume" type="Button" parent="Root/CenterContainer/Panel/mgnPauseMenu/vbxPauseMenu" unique_id=1688258716]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 text = "Resume"
 
-[node name="btnSettings" type="Button" parent="Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu" unique_id=2001042827]
+[node name="btnSettings" type="Button" parent="Root/CenterContainer/Panel/mgnPauseMenu/vbxPauseMenu" unique_id=2001042827]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 text = "Settings"
 
-[node name="btnRestart" type="Button" parent="Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu" unique_id=978483071]
+[node name="btnRestart" type="Button" parent="Root/CenterContainer/Panel/mgnPauseMenu/vbxPauseMenu" unique_id=978483071]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 text = "Restart"
 
-[node name="btnQuit" type="Button" parent="Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu" unique_id=1357561839]
+[node name="btnQuit" type="Button" parent="Root/CenterContainer/Panel/mgnPauseMenu/vbxPauseMenu" unique_id=1357561839]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 text = "Quit"
@@ -86,7 +86,7 @@ text = "Quit"
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu/btnResume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu/btnSettings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu/btnRestart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu/btnQuit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Root/CenterContainer/Panel/mgnPauseMenu/vbxPauseMenu/btnResume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Root/CenterContainer/Panel/mgnPauseMenu/vbxPauseMenu/btnSettings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Root/CenterContainer/Panel/mgnPauseMenu/vbxPauseMenu/btnRestart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Root/CenterContainer/Panel/mgnPauseMenu/vbxPauseMenu/btnQuit" to="." method="_on_quit_pressed"]

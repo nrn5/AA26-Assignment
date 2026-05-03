@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var pause_menu = $Root/CenterContainer/Panel/MarginContainer/vbxPauseMenu
+@onready var pause_menu = $Root/CenterContainer/Panel/mgnPauseMenu/vbxPauseMenu
 @onready var settings_menu = $Root/SettingsMenu
 
 var player_ref = null
