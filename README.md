@@ -11,11 +11,11 @@ Made up of **four** main layers:
 1. Seek:
 2. Arrive:
 3. Pursue:
-4. Wander:
-5. Alignment:
-6. Cohesion:
-7. Avoidance:
-8. Constrain:
+4. **Wander:** The agent picks a random direction on a circle and slowly turns towards it over time. The direction changes occasionally, creating a smooth movement.
+6. Alignment:
+7. Cohesion:
+8. Avoidance:
+9. Constrain:
 
 #### Gizmo Colours Key
 * *Beige Sphere*: Used in **Constrain**, shows the allowed movement area.
