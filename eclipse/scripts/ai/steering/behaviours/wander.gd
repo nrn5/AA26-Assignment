@@ -5,7 +5,7 @@ extends SteeringBehaviour
 @export var wander_radius := 2.0
 
 @export var angle_change_speed := 2.5      
-@export var change_interval := 1.0     
+@export var change_interval := 2.0    
 @export var move_speed := 3.0
 
 var current_angle := 0.0
