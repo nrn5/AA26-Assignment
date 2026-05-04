@@ -10,11 +10,11 @@ points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4
 [node name="Player" type="CharacterBody3D" unique_id=1307957792]
 script = ExtResource("1_8afob")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1974608232]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1974608232 groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_x7p2l")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1726880514]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1726880514 groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("ConvexPolygonShape3D_8afob")
 
