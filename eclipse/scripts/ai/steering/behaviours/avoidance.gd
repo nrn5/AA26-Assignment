@@ -1,81 +1,105 @@
 class_name Avoidance
 extends SteeringBehaviour
 
-@export var obstacles: Array[Node3D] = []
-@export var feeler_length := 10.0
+@export var feeler_length := 6.0
 @export var feeler_angle := 45.0
-@export var updates_per_second := 5
+@export var avoidance_strength := 3.0
+@export var feeler_count := 5
 
-var force := Vector3.ZERO
-var feelers := []
+var avoidance_force := Vector3.ZERO
 var space_state: PhysicsDirectSpaceState3D
-var needs_update := true
 
 func _ready():
+	await get_tree().process_frame
+
+	if agent == null:
+		push_error("Avoidance: agent not assigned")
+		return
 	space_state = agent.get_world_3d().direct_space_state
-	# stagger updates so multiple agents dont snyc
-	var timer = Timer.new()
-	add_child(timer)
-	timer.wait_time = randf_range(0.0, 1.0)
-	timer.one_shot = true
-	timer.connect("timeout", Callable(self, "start_updating"))
-	timer.start()
 
-func start_updating():
-	var timer = get_child(0)
-	timer.wait_time = 1.0 / updates_per_second
-	timer.one_shot = false
-	timer.timeout.connect(_on_update_tick)
-	timer.start()
-
-func _on_update_tick():
-	needs_update = true
-
-func _physics_process(delta):
-	if needs_update:
-		update_feelers()
-		needs_update = false
-
+# { OUTPUT }
 func calculate() -> Vector3:
-	return force * weight
+	return avoidance_force * weight
 
+# { PHYSICS }
+func _physics_process(_delta):
+	if agent == null or space_state == null:
+		return
+	update_feelers()
+
+# { UPDATE FEELERS }
 func update_feelers():
-	force = Vector3.ZERO
-	feelers.clear()
+	# reset each frame
+	avoidance_force = Vector3.ZERO
 
-	var forward = -agent.global_transform.basis.z * feeler_length
-	# main forward feeler
-	feelers.append(cast_feeler(forward))
-	# side feelers (spread)
-	feelers.append(cast_feeler(Quaternion(Vector3.UP, deg_to_rad(feeler_angle)) * forward))
-	feelers.append(cast_feeler(Quaternion(Vector3.UP, deg_to_rad(-feeler_angle)) * forward))
+	var forward = -agent.global_transform.basis.z
+	var right = forward.cross(Vector3.UP).normalized()
 
-	feelers.append(cast_feeler(Quaternion(Vector3.RIGHT, deg_to_rad(feeler_angle)) * forward))
-	feelers.append(cast_feeler(Quaternion(Vector3.RIGHT, deg_to_rad(-feeler_angle)) * forward))
+	var dirs = [forward,
+				forward.rotated(Vector3.UP, deg_to_rad(feeler_angle)),
+				forward.rotated(Vector3.UP, deg_to_rad(-feeler_angle)),
+				right,
+				-right]
+	for d in dirs:
+		cast_feeler(d.normalized())
 
-func cast_feeler(local_ray: Vector3) -> Dictionary:
-	var result_data = {}
+# { RAYCAST }
+func cast_feeler(dir: Vector3):
 	var start = agent.global_position
-	var end = agent.global_transform * local_ray
+	start.y += 0.2  # keep rays aligned to ground height
+	var end = start + dir * feeler_length
+	dir.y = 0
+	dir = dir.normalized()
+
 	var query = PhysicsRayQueryParameters3D.create(start, end)
 	query.exclude = [agent]
-	var result = space_state.intersect_ray(query)
+	var hit = space_state.intersect_ray(query)
+	# no wall detected so weak forward bias so we dont stall
+	if hit.is_empty():
+		avoidance_force += dir * 0.05
+		return
+	# hit wall so push away based on angle + distance
+	var normal = hit.normal
+	normal.y = 0
+	normal = normal.normalized()
 
-	result_data["end"] = end
-	result_data["hit"] = result
+	var incidence = clamp(-dir.dot(normal), 0.0, 1.0)
+	var dist = (hit.position - start).length()
+	var falloff = 1.0 - (dist / feeler_length)
 
-	if result:
-		var hit_position = result.position
-		var normal = result.normal
+	avoidance_force += normal * incidence * falloff * avoidance_strength
 
-		result_data["hitPosition"] = hit_position
-		result_data["normal"] = normal
+# { DEBUG }
+func on_draw_gizmos():
+	if agent == null:
+		return
+	var start = agent.global_position
+	start.y += 0.2
 
-		var to_agent = agent.global_position - hit_position
-		var distance_factor = (feeler_length - to_agent.length()) / feeler_length
-		var avoidance_factor = Vector3.ZERO
+	var forward = -agent.global_transform.basis.z
+	var right = forward.cross(Vector3.UP).normalized()
 
-		avoidance_factor = normal * distance_factor
-		force += avoidance_factor
+	var dirs = [forward,
+				forward.rotated(Vector3.UP, deg_to_rad(feeler_angle)),
+				forward.rotated(Vector3.UP, deg_to_rad(-feeler_angle)),
+				right,
+				-right]
+	for d in dirs:
+		var end = start + d * feeler_length
+		DebugDraw3D.draw_line(start, end, Color(0.2, 0.6, 1.0))
 
-	return result_data
+		var hit = _debug_raycast(d)
+		if hit.size() > 0:
+			DebugDraw3D.draw_sphere(hit.position, 0.15, Color.RED)
+			DebugDraw3D.draw_line(hit.position, hit.position + hit.normal, Color.YELLOW)
+	DebugDraw3D.draw_line(start, start + avoidance_force, Color(1, 0.2, 0.2))
+
+func _debug_raycast(dir: Vector3) -> Dictionary:
+	var start = agent.global_position
+	start.y += 0.2
+
+	var end = start + dir * feeler_length
+	var query = PhysicsRayQueryParameters3D.create(start, end)
+	query.exclude = [agent]
+
+	return space_state.intersect_ray(query)
