@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bhi86dhf0png"]
+
+[ext_resource type="Script" uid="uid://dhp0ludgmwhs8" path="res://scripts/ui/game_ui.gd" id="1_gwk6t"]
+
+[node name="GameUI" type="CanvasLayer" unique_id=1902911243]
+script = ExtResource("1_gwk6t")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1744663499]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=509523385]
+layout_mode = 2
+size_flags_horizontal = 0
+alignment = 2
+
+[node name="lblGoodFood" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1037108381]
+layout_mode = 2
+text = "Good food: 0"
+
+[node name="lblBadFood" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2117457366]
+layout_mode = 2
+text = "Bad food: 0"
