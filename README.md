@@ -37,3 +37,9 @@ Made up of **four** main layers:
 [Alien Crunch Munch](https://pixabay.com/sound-effects/people-munchin-95618/)
 
 [Gameplay Background Music](https://pixabay.com/sound-effects/musical-mystical-music-54294/)
+
+[Alien Model](https://sketchfab.com/3d-models/simple-humanoid-53dcd7cf86a4461d963b3c7efa83bc4e) (modified slightly by me)
+
+[Watermelon](https://sketchfab.com/3d-models/cute-watermelon-ae853054c7cd4fd39e6c29fbd3322779#download)
+
+[Banana Peel](https://sketchfab.com/3d-models/banana-peeltrash-low-poly-fe8ac13bc7144583bb9d03a21ac59ded#download)
