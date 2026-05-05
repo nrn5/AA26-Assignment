@@ -1,10 +1,10 @@
 extends CanvasLayer
 class_name GameUI
 
-@onready var good_label     = $MarginContainer/VBoxContainer/lblGoodFood
-@onready var bad_label      = $MarginContainer/VBoxContainer/lblBadFood
+@onready var good_label = $MarginContainer/VBoxContainer/lblGoodFood
+@onready var bad_label = $MarginContainer/VBoxContainer/lblBadFood
 @onready var interact_label = $MarginContainer/VBoxContainer/lblInteract
-@onready var trust_bar: ProgressBar  = $MarginContainer/VBoxContainer/HBoxContainer/TrustBar
+@onready var trust_bar: ProgressBar = $MarginContainer/VBoxContainer/HBoxContainer/TrustBar
 @onready var health_bar: ProgressBar = $MarginContainer/VBoxContainer/HBoxContainer2/HealthBar
 
 var _trust_fill_style  := StyleBoxFlat.new()
