@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b4rdo17chiup6"]
 
 [ext_resource type="Script" uid="uid://7ehp3tmseky2" path="res://scripts/core/food.gd" id="1_8ngn5"]
+[ext_resource type="PackedScene" uid="uid://c4fetip48lrnl" path="res://assets/models/watermelon/source/water_melon.fbx" id="2_7eyn8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ngn5"]
 albedo_color = Color(0, 1, 0.08627451, 1)
@@ -11,11 +12,37 @@ material = SubResource("StandardMaterial3D_8ngn5")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7eyn8"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7eyn8"]
+lifetime_randomness = 0.8
+emission_shape = 1
+emission_sphere_radius = 1.0
+inherit_velocity_ratio = 0.5
+gravity = Vector3(0, 0, 0)
+color = Color(0.9764706, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7eyn8"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_wx5ta"]
+material = SubResource("StandardMaterial3D_7eyn8")
+radius = 0.03
+height = 0.03
+
 [node name="GoodFood" type="Area3D" unique_id=2020922809]
 script = ExtResource("1_8ngn5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1483515497]
+visible = false
 mesh = SubResource("BoxMesh_7eyn8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2146806604]
 shape = SubResource("ConcavePolygonShape3D_7eyn8")
+
+[node name="water_melon" parent="." unique_id=278183446 instance=ExtResource("2_7eyn8")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.36855075, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1660587431]
+amount = 20
+lifetime = 1.5
+process_material = SubResource("ParticleProcessMaterial_7eyn8")
+draw_pass_1 = SubResource("SphereMesh_wx5ta")

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ctoeajqjdaix3"]
+
+[ext_resource type="PackedScene" uid="uid://bvo4tdt76bmyn" path="res://assets/models/ufo/source/UFO.fbx" id="1_nx207"]
+[ext_resource type="Script" uid="uid://nv51db4f8dsr" path="res://scripts/maze/space_ship.gd" id="1_xkx65"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4gkv6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nx207"]
+
+[node name="SpaceShip" type="Area3D" unique_id=1026870112]
+script = ExtResource("1_xkx65")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=968264920]
+visible = false
+mesh = SubResource("BoxMesh_4gkv6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1326464340]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_nx207")
+
+[node name="UFO" parent="." unique_id=1313089474 instance=ExtResource("1_nx207")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.39327478, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=312182309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30985713, 0)
+light_color = Color(1, 1, 0.2627451, 1)
+light_energy = 2.0

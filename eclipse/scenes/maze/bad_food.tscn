@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://y7i515aln03r"]
 
 [ext_resource type="Script" uid="uid://7ehp3tmseky2" path="res://scripts/core/food.gd" id="1_3rvsx"]
+[ext_resource type="PackedScene" uid="uid://curmi1bb2q3mn" path="res://assets/models/banana-skin/source/banana_skin.fbx" id="2_8x55b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sq6vb"]
 albedo_color = Color(0.9607843, 0, 0, 1)
@@ -11,12 +12,36 @@ material = SubResource("StandardMaterial3D_sq6vb")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7eyn8"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i58ub"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+inherit_velocity_ratio = 0.5
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nuqiv"]
+albedo_color = Color(0.77807504, 0.32286838, 7.70092e-07, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_pmxa2"]
+material = SubResource("StandardMaterial3D_nuqiv")
+radius = 0.03
+height = 0.03
+
 [node name="BadFood" type="Area3D" unique_id=357410425]
 script = ExtResource("1_3rvsx")
 is_good = false
 
+[node name="banana_skin" parent="." unique_id=1753904457 instance=ExtResource("2_8x55b")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2145781809]
+visible = false
 mesh = SubResource("BoxMesh_8ngn5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1246474017]
 shape = SubResource("ConcavePolygonShape3D_7eyn8")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1956806281]
+amount = 20
+lifetime = 1.5
+process_material = SubResource("ParticleProcessMaterial_i58ub")
+draw_pass_1 = SubResource("SphereMesh_pmxa2")
