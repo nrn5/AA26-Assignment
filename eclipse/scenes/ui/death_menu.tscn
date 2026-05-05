@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://ds4u6pl6hy6tx"]
+
+[ext_resource type="Script" uid="uid://c7jq4okmyq53e" path="res://scripts/ui/end_menu.gd" id="1_mt1vs"]
+
+[node name="DeathMenu" type="CanvasLayer" unique_id=579929015]
+script = ExtResource("1_mt1vs")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1674691862]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.78431374)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=733451382]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1184355036]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel" unique_id=490697616]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -23.5
+offset_right = 20.0
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=1702821079]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "You Died!"
+
+[node name="Restart" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=1800048321]
+layout_mode = 2
+text = "Restart"
+
+[node name="Quit" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=666168285]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
