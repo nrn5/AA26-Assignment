@@ -23,18 +23,20 @@ The aliens trust level is the primary factor that determines its behaviour:
 90–100% Trust: The alien becomes fully trusting and will guide the player, leading them toward the exit spaceship.
 
 
-### Steering Behaviours
-#### Gizmo Colours Key
-* *Beige Sphere*: Used in **Constrain**, shows the allowed movement area.
-* *Red Line*: Used in **Seperation/Avoidance/Constrain**, shows the final steering force.
-* *Green Lines*: Used in **Seperation**, shows repulsion from each neighbour.
-* *Dark Green Point*: Used in **Cohesion**, shows the grouup center of mass.
-* *Yellow Line*: Used in **Alignment**, shows the average group movement direction.
-* *Blue Sphere*: Used in **Avoidance**, shows detection radius.
-* *Yellow-Green Line*: Used in **Avoidance**, shows raycast hit direction.
-* *Orange Line*: Used in **Pursue**, shows current target position.
-* *Purple Point*: Used in **Pursue**, shows predicted future target position.
-* *Purple Line*: Used in **Wander**, shows projected wander target.
+## Screenshots
+![Main Menu](images/main_menu.png)
+![Alien and Gameplay UI](images/alien_gameplay_ui.png)
+![Feed UI](images/feed_ui.png)
+![Bad Food](images/bad_food.png)
+![Good Food](images/good_food.png)
+![Boids](images/boids.png)
+![Spaceship](images/spaceship.png)
+![Pause Menu](images/pause_menu.png)
+![Settings Menu](images/settings_menu.png)
+![Win Menu](images/win_menu.png)
+![Death Menu](images/death_menu.png)
+
+## Video
 
 
 ## Resources
