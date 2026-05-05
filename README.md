@@ -24,17 +24,39 @@ The aliens trust level is the primary factor that determines its behaviour:
 
 
 ## Screenshots
-![Main Menu](images/main_menu.png)
-![Alien and Gameplay UI](images/alien_gameplay_ui.png)
-![Feed UI](images/feed_ui.png)
-![Bad Food](images/bad_food.png)
-![Good Food](images/good_food.png)
-![Boids](images/boids.png)
-![Spaceship](images/spaceship.png)
-![Pause Menu](images/pause_menu.png)
-![Settings Menu](images/settings_menu.png)
-![Win Menu](images/win_menu.png)
-![Death Menu](images/death_menu.png)
+Main menu
+
+![Main Menu](images/main_menu.PNG)
+Alien and gameplay UI
+
+![Alien and Gameplay UI](images/alien_gameplay_ui.PNG)
+
+Feed UI
+![Feed UI](images/feed_ui.PNG)
+
+Bad food
+![Bad Food](images/bad_food.PNG)
+
+Good food
+![Good Food](images/good_food.PNG)
+
+Boids
+![Boids](images/boids.PNG)
+
+Spaceship
+![Spaceship](images/space_ship.PNG)
+
+Pause menu
+![Pause Menu](images/pause_menu.PNG)
+
+Settings menu
+![Settings Menu](images/settings_menu.PNG)
+
+Win menu
+![Win Menu](images/win_menu.PNG)
+
+Death menu
+![Death Menu](images/death_menu.PNG)
 
 ## Video
 
