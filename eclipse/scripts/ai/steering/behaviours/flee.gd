@@ -3,7 +3,6 @@ extends SteeringBehaviour
 
 @export var target_path: NodePath
 @export var flee_range := 50.0
-@export var max_speed := 5.0
 
 var target: Node3D
 
@@ -14,16 +13,14 @@ func _ready():
 func calculate() -> Vector3:
 	if target == null:
 		return Vector3.ZERO
-	var away = agent.global_position - target.global_position
-	var dist = away.length()
+
+	var away := agent.global_position - target.global_position
+	var dist := away.length()
 
 	if dist > flee_range:
 		return Vector3.ZERO
-	var desired_velocity = away.normalized() * max_speed
 
-	return (desired_velocity - agent.velocity) * weight
+	if dist < 0.001:
+		return Vector3.ZERO
 
-func on_draw_gizmos():
-	if !draw_gizmos or target == null:
-		return
-	DebugDraw3D.draw_sphere(target.global_position, flee_range, Color.RED)
+	return away.normalized() * agent.speed

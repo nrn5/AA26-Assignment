@@ -2,7 +2,7 @@ class_name Seek
 extends SteeringBehaviour
 
 @export var target_path: NodePath
-@export var max_speed := 4.0
+@export var move_speed := 3.0
 
 var target: Node3D
 
@@ -10,17 +10,24 @@ func _ready():
 	if target_path:
 		target = get_node(target_path)
 
+# { OUTPUT }
 func calculate() -> Vector3:
-	if target == null:
+	# safety checks
+	if agent == null or target == null:
 		return Vector3.ZERO
-		
-	var to_target = target.global_position - agent.global_position
-	var desired_velocity = to_target.normalized() * max_speed
+	# direction to target (flattened to ground plane)
+	var dir = target.global_position - agent.global_position
+	dir.y = 0
+	# avoid jitter when extremely close
+	if dir.length_squared() < 0.001:
+		return Vector3.ZERO
+	# normalize to convert to velocity
+	dir = dir.normalized()
+	return dir * move_speed
 
-	return (desired_velocity - agent.velocity) * weight
-
+# { DEBUG }
 func on_draw_gizmos():
-	if !draw_gizmos or target == null:
+	if !draw_gizmos or agent == null or target == null:
 		return
-	DebugDraw3D.draw_line(agent.global_position, target.global_position, 
-						  Color.GREEN)
+	# draw direct line to target
+	DebugDraw3D.draw_line(agent.global_position,target.global_position,Color.GREEN)
