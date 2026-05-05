@@ -60,6 +60,8 @@ Death menu
 
 ## Video
 
+## Reflection
+Through developing this project, I understood better how different systems in a game led by AA come together to create a cohesive experience. I worked with procedural generation, AI behaviour systems, UI design, and scene management (SOLID), which helped me improve both my technical skills and my ability to structure a project. One of the key things i learned was the importance of iteration! Many features, such as the interaction UI and alien behaviour, required refinement to work smoothly and feel intuitive. I also learned how small details like feedback, layout, and performance considerations can significantly impact the overall quality of the game.
 
 ## Resources
 
