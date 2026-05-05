@@ -3,7 +3,7 @@ extends CharacterBody3D
 @export var speed := 2.5
 @export var turn_speed := 6.0
 
-@export var neighbor_radius := 6.0
+@export var neighbour_radius := 6.0
 @export var food_radius := 10.0
 @export var wall_avoid_distance := 3.0
 
@@ -47,7 +47,7 @@ func cohesion() -> Vector3:
 			continue
 
 		var d := global_position.distance_to(b.global_position)
-		if d < neighbor_radius:
+		if d < neighbour_radius:
 			avg += b.global_position
 			count += 1
 
