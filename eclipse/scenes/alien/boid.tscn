@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bvry83lxmjv38"]
+
+[ext_resource type="Script" uid="uid://csj4w1d7nvdt8" path="res://scripts/ai/boid.gd" id="1_d45mo"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jddo2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhyvj"]
+albedo_color = Color(1, 0.84313726, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_myyig"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bf6uy"]
+albedo_color = Color(1, 0.18039216, 0.12941177, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rf5w7"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7rxl4"]
+
+[node name="Boid" type="CharacterBody3D" unique_id=955391560]
+transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, 0, 0, 0)
+script = ExtResource("1_d45mo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=551788564]
+mesh = SubResource("SphereMesh_jddo2")
+surface_material_override/0 = SubResource("StandardMaterial3D_yhyvj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=442631127]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.25773543, 0.044050634, 0)
+mesh = SubResource("SphereMesh_myyig")
+surface_material_override/0 = SubResource("StandardMaterial3D_bf6uy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D" unique_id=1972627570]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.25773543, 0.044050634, 0)
+mesh = SubResource("SphereMesh_myyig")
+surface_material_override/0 = SubResource("StandardMaterial3D_rf5w7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1436795531]
+shape = SubResource("SphereShape3D_7rxl4")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1068252178]
+light_color = Color(0.9958127, 0.42046306, 1, 1)
+light_energy = 1.5
+omni_range = 6.0
