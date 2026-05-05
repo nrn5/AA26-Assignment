@@ -1,7 +1,20 @@
 [gd_scene format=3 uid="uid://dgjpox5qllmcr"]
 
+[ext_resource type="Script" uid="uid://ps1kbjnlu7bh" path="res://scripts/core/main.gd" id="1_6q06x"]
 [ext_resource type="Texture2D" uid="uid://c25wsng234m0t" path="res://assets/textures/sky/nightsky_8k.exr" id="1_hyk8p"]
 [ext_resource type="PackedScene" uid="uid://s225g2ltiink" path="res://scenes/player/player.tscn" id="2_iuonh"]
+[ext_resource type="PackedScene" uid="uid://dpjdh3xbu5atf" path="res://scenes/alien/alien.tscn" id="3_k2fmo"]
+[ext_resource type="Script" uid="uid://4mw0x3o5lxyy" path="res://scripts/maze/maze_generator.gd" id="5_ow5a4"]
+[ext_resource type="PackedScene" uid="uid://b4rdo17chiup6" path="res://scenes/maze/good_food.tscn" id="6_hujxm"]
+[ext_resource type="PackedScene" uid="uid://y7i515aln03r" path="res://scenes/maze/bad_food.tscn" id="7_yyfjg"]
+[ext_resource type="PackedScene" uid="uid://bvry83lxmjv38" path="res://scenes/alien/boid.tscn" id="8_blune"]
+[ext_resource type="PackedScene" uid="uid://bhi86dhf0png" path="res://scenes/ui/game_ui.tscn" id="8_yyfjg"]
+[ext_resource type="PackedScene" uid="uid://bj46mp7sw4rut" path="res://scenes/ui/interaction_ui.tscn" id="9_b1x3f"]
+[ext_resource type="PackedScene" uid="uid://ctoeajqjdaix3" path="res://scenes/maze/space_ship.tscn" id="9_th5th"]
+[ext_resource type="Material" uid="uid://bvwh2a1hinv4c" path="res://assets/textures/wall/wall_tiles.tres" id="10_7smn1"]
+[ext_resource type="PackedScene" uid="uid://cscdvsaxom6yg" path="res://scenes/ui/pause_menu.tscn" id="10_a8run"]
+[ext_resource type="AudioStream" uid="uid://c5uh1khly1b2p" path="res://assets/audio/bg_music.mp3" id="11_ouso4"]
+[ext_resource type="Material" uid="uid://cxr2il50mkg45" path="res://assets/textures/floor/floor_texture.tres" id="11_raeie"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vom5j"]
 
@@ -21,9 +34,11 @@ ambient_light_source = 3
 ambient_light_color = Color(7.2196127e-07, 0, 0.38540518, 1)
 
 [node name="Main" type="Node3D" unique_id=1145765985]
+script = ExtResource("1_6q06x")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=947382225]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
+visible = false
 mesh = SubResource("PlaneMesh_vom5j")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1274662586]
@@ -40,3 +55,54 @@ shadow_enabled = true
 environment = SubResource("Environment_hyk8p")
 
 [node name="Player" parent="." unique_id=1307957792 instance=ExtResource("2_iuonh")]
+
+[node name="Alien" parent="." unique_id=317773465 instance=ExtResource("3_k2fmo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3371234, 0, 0)
+
+[node name="n3DMazeGenerator" type="Node3D" parent="." unique_id=597225715]
+script = ExtResource("5_ow5a4")
+maze_area = Vector2i(10, 10)
+cell_size = 5.0
+wall_height = 5.0
+wall_thickness = 0.1
+open_area_radius_x = 1
+open_area_radius_y = 1
+exit_zone_radius = 1
+light_chance = 0.3
+good_food_scene = ExtResource("6_hujxm")
+bad_food_scene = ExtResource("7_yyfjg")
+food_spawn_chance = 0.5
+bad_food_ratio = 0.5
+boid_scene = ExtResource("8_blune")
+boid_count = 30
+spaceship_scene = ExtResource("9_th5th")
+wall_material = ExtResource("10_7smn1")
+floor_material = ExtResource("11_raeie")
+
+[node name="GoodFood" parent="." unique_id=2020922809 instance=ExtResource("6_hujxm")]
+
+[node name="BadFood" parent="." unique_id=357410425 instance=ExtResource("7_yyfjg")]
+
+[node name="GameUI" parent="." unique_id=1902911243 instance=ExtResource("8_yyfjg")]
+
+[node name="InteractionUI" parent="." unique_id=974826126 instance=ExtResource("9_b1x3f")]
+visible = false
+
+[node name="PauseMenu" parent="." unique_id=1454217643 instance=ExtResource("10_a8run")]
+visible = false
+
+[node name="auMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=309141520]
+process_mode = 3
+stream = ExtResource("11_ouso4")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[node name="au3DMusicPlayer1" type="AudioStreamPlayer3D" parent="." unique_id=144816190]
+stream = ExtResource("11_ouso4")
+autoplay = true
+bus = &"Music"
+parameters/looping = false
+
+[editable path="Alien"]
+[editable path="Alien/alien_strut"]
