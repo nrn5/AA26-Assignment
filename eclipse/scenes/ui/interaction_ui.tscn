@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://bj46mp7sw4rut"]
+
+[ext_resource type="Script" uid="uid://d25sni5r831mp" path="res://scripts/ui/interaction_ui.gd" id="1_e5854"]
+
+[node name="InteractionUI" type="CanvasLayer" unique_id=974826126]
+script = ExtResource("1_e5854")
+
+[node name="pnlDialogue" type="Panel" parent="." unique_id=2024647663]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pnlDialogue" unique_id=1031513669]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = -46.5
+offset_right = 51.5
+offset_bottom = 46.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EmotionText" type="Label" parent="pnlDialogue/VBoxContainer" unique_id=2026529083]
+layout_mode = 2
+text = "Emotion Text"
+
+[node name="Feed" type="Button" parent="pnlDialogue/VBoxContainer" unique_id=702470122]
+layout_mode = 2
+text = "Feed"
+
+[node name="Back" type="Button" parent="pnlDialogue/VBoxContainer" unique_id=1031580268]
+layout_mode = 2
+text = "Back"
+
+[node name="pnlFeed" type="Panel" parent="." unique_id=1009904090]
+anchors_preset = -1
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 0.9
+offset_top = -11.600006
+offset_bottom = 49.799988
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 10
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pnlFeed" unique_id=774678929]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -80.0
+offset_right = 576.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="lblGoodFood" type="Label" parent="pnlFeed/VBoxContainer" unique_id=1741795346]
+layout_mode = 2
+text = "Good food count: 0"
+
+[node name="GoodFood" type="HSlider" parent="pnlFeed/VBoxContainer" unique_id=293271753]
+layout_mode = 2
+
+[node name="lblBadFood" type="Label" parent="pnlFeed/VBoxContainer" unique_id=2067071998]
+layout_mode = 2
+text = "Bad food count: 0"
+
+[node name="BadFood" type="HSlider" parent="pnlFeed/VBoxContainer" unique_id=838026971]
+layout_mode = 2
+
+[node name="FeedConfirm" type="Button" parent="pnlFeed/VBoxContainer" unique_id=17051387]
+layout_mode = 2
+text = "Feed Confirm"
+
+[node name="Exit" type="Button" parent="pnlFeed/VBoxContainer" unique_id=512843362]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="pnlDialogue/VBoxContainer/Feed" to="." method="_on_feed_pressed"]
+[connection signal="pressed" from="pnlDialogue/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="pnlFeed/VBoxContainer/FeedConfirm" to="." method="_on_feed_confirm_pressed"]
+[connection signal="pressed" from="pnlFeed/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
